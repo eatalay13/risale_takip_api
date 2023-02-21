@@ -1,6 +1,7 @@
+import { Team } from "@/utils/types";
 import mongoose from "mongoose";
 
-const teamSchema = new mongoose.Schema({
+const teamSchema = new mongoose.Schema<Team>({
     id: {
         type: Number,
         required: true
@@ -16,6 +17,6 @@ const teamSchema = new mongoose.Schema({
     }
 });
 
-const teamModel = mongoose.model("Team", teamSchema, "Team");
+const teamModel = mongoose.model<Team>("Team", teamSchema, "Team");
 
 export default teamModel;
