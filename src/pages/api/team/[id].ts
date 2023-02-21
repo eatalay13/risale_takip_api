@@ -10,7 +10,7 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
 
             res.send({
                 id: parseInt(id!.toString()),
-                name: "4. Etap Okuma Grubu",
+                name: id + ". Etap Okuma Grubu",
                 isActive: true
             });
         },
