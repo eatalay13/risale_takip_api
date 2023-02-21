@@ -5,22 +5,17 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
 
     const handleCase: ResponseFuncs = {
-        GET: async (req: NextApiRequest, res: NextApiResponse<Team[]>) => {
-            res.send([
-                {
-                    id: 1,
-                    name: "4. Etap Okuma Grubu",
-                    isActive: true
-                },
-                {
-                    id: 2,
-                    name: "2. Etap Okuma Grubu",
-                    isActive: true
-                }
-            ]);
+        GET: async (req: NextApiRequest, res: NextApiResponse<Team>) => {
+            var { id } = req.query;
+
+            res.send({
+                id: parseInt(id!.toString()),
+                name: "4. Etap Okuma Grubu",
+                isActive: true
+            });
         },
 
-        POST: async (req: NextApiRequest, res: NextApiResponse) => {
+        PUT: async (req: NextApiRequest, res: NextApiResponse) => {
             res.status(200).end();
         },
     }

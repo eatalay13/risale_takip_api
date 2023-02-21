@@ -6,7 +6,7 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const handleCase: ResponseFuncs = {
         GET: async (req: NextApiRequest, res: NextApiResponse<User[]>) => {
-            res.json([
+            res.send([
                 {
                     id: 1,
                     teamId: 1,
@@ -35,7 +35,7 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const response = handleCase[method]
     if (response) response(req, res)
-    else res.status(400).json({ error: "No Response for This Request" })
+    else res.status(400).send({ error: "No Response for This Request" })
 }
 
 export default handler;
