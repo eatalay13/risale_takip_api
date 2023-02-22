@@ -6,17 +6,17 @@ export interface ResponseFuncs {
 }
 
 export interface Team {
-    id: number
-    name: string,
-    isActive: boolean
+    id: Number
+    name: String,
+    isActive: Boolean
 }
 
 export interface User {
-    id: number,
-    teamId: number,
-    firstName: string,
-    lastName: string,
-    username: string,
-    password: string,
-    isActive: boolean
+    id: Number,
+    teamId: Number,
+    firstName: String,
+    lastName: String,
+    username: String,
+    password: String,
+    isActive: Boolean
 }
