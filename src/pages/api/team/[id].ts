@@ -1,21 +1,34 @@
+import { connect } from "@/utils/connection";
 import { ResponseFuncs, Team } from "@/utils/types";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
+
+
 
     const handleCase: ResponseFuncs = {
         GET: async (req: NextApiRequest, res: NextApiResponse<Team>) => {
             var { id } = req.query;
 
-            res.send({
-                id: parseInt(id!.toString()),
-                name: id + ". Etap Okuma Grubu",
-                isActive: true
-            });
+            if (!id)
+                res.status(400).end();
+
+            var { teamModel } = await connect();
+
+            let team = await teamModel.findOne().where({ id: id });
+
+            res.send(team as Team);
         },
 
-        PUT: async (req: NextApiRequest, res: NextApiResponse) => {
+        POST: async (req: NextApiRequest, res: NextApiResponse) => {
+            var { teamModel } = await connect();
+            
+            await teamModel.create({
+                id: 1,
+                name: "4. Etap Okuma Grubu",
+                isActive: true
+            });
             res.status(200).end();
         },
     }

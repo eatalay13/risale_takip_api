@@ -1,3 +1,4 @@
+import { connect } from "@/utils/connection";
 import { ResponseFuncs, Team } from "@/utils/types";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -6,18 +7,8 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const handleCase: ResponseFuncs = {
         GET: async (req: NextApiRequest, res: NextApiResponse<Team[]>) => {
-            res.send([
-                {
-                    id: 1,
-                    name: "4. Etap Okuma Grubu",
-                    isActive: true
-                },
-                {
-                    id: 2,
-                    name: "2. Etap Okuma Grubu",
-                    isActive: true
-                }
-            ]);
+            var { teamModel } = await connect();
+            res.send(await teamModel.find({}));
         },
 
         POST: async (req: NextApiRequest, res: NextApiResponse) => {

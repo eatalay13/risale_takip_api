@@ -28,7 +28,7 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
             ]);
         },
 
-        POST: async (req: NextApiRequest, res: NextApiResponse) => {
+        POST: async (req: NextApiRequest, res: NextApiResponse) => {           
             res.status(200).end();
         },
     }
