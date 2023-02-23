@@ -19,18 +19,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             let team = await teamModel.findOne().where({ id: id });
 
             res.send(team as Team);
-        },
-
-        POST: async (req: NextApiRequest, res: NextApiResponse) => {
-            var { teamModel } = await connect();
-            
-            await teamModel.create({
-                id: 1,
-                name: "4. Etap Okuma Grubu",
-                isActive: true
-            });
-            res.status(200).end();
-        },
+        }
     }
 
     const response = handleCase[method]

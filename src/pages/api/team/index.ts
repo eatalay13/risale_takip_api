@@ -12,6 +12,13 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
         },
 
         POST: async (req: NextApiRequest, res: NextApiResponse) => {
+            var { teamModel } = await connect();
+
+            await teamModel.create({
+                id: 2,
+                name: "3. Etap Okuma Grubu",
+                isActive: true
+            });
             res.status(200).end();
         },
     }
