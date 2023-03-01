@@ -4,15 +4,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
     const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
-
-
-
+    
     const handleCase: ResponseFuncs = {
         GET: async (req: NextApiRequest, res: NextApiResponse<Team>) => {
             var { id } = req.query;
 
             if (!id)
-                res.status(400).end();
+                res.status(404).end();
 
             var { teamModel } = await connect();
 
