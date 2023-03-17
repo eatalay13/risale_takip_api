@@ -1,5 +1,5 @@
+import { Team } from "@/types/team";
 import { connect } from "@/utils/connection";
-import { Team } from "@/utils/types";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request, params: { params: { id: String } }) {

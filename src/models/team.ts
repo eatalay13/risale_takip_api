@@ -1,4 +1,4 @@
-import { Team } from "@/utils/types";
+import { Team } from "@/types";
 import mongoose from "mongoose";
 
 const teamSchema = new mongoose.Schema<Team>({

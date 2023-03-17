@@ -1,6 +1,6 @@
 import teamSchema from "@/models/team";
+import { Team } from "@/types";
 import mongoose from "mongoose";
-import { Team } from "./types";
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { MONGODB_URI } = process.env
